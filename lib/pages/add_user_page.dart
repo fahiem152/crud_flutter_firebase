@@ -24,7 +24,9 @@ class _AddUserPageState extends State<AddUserPage> {
       appBar: AppBar(
         leading: GestureDetector(
           child: Icon(Icons.arrow_back),
-          // onTap: Navigator.pop(context),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           'Add User',
