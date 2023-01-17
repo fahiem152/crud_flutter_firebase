@@ -1,5 +1,6 @@
 import 'package:crud_flutter_firebase/models/user_model.dart';
 import 'package:crud_flutter_firebase/pages/add_user_page.dart';
+import 'package:crud_flutter_firebase/pages/update_user_page.dart';
 import 'package:crud_flutter_firebase/services/get_users_service.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,9 @@ class _UsersPageState extends State<UsersPage> {
               final users = snapshot.data!;
               return ListView(children: users.map(buildUser).toList());
             } else {
-              return CircularProgressIndicator();
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
           }),
       floatingActionButton: FloatingActionButton(
@@ -45,13 +48,58 @@ class _UsersPageState extends State<UsersPage> {
     );
   }
 
-  Widget buildUser(User user) => ListTile(
-        leading: CircleAvatar(
-          child: Text(
-            '${user.age}',
-          ),
+  Widget buildUser(User user) => Container(
+        margin: EdgeInsets.all(12),
+
+        child: Row(
+          children: [
+            CircleAvatar(
+              child: Text(
+                '${user.age}',
+              ),
+            ),
+            SizedBox(
+              width: 16,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name),
+                Text(user.birthday.toIso8601String()),
+              ],
+            ),
+            Spacer(),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UpdateUserPage(
+                          user: user,
+                        ),
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.edit,
+                    color: Colors.blue,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {
+                    // deleteUser(user.id);
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
-        title: Text(user.name),
-        subtitle: Text(user.birthday.toIso8601String()),
+        //
       );
 }
