@@ -1,6 +1,7 @@
 import 'package:crud_flutter_firebase/models/user_model.dart';
 import 'package:crud_flutter_firebase/pages/add_user_page.dart';
 import 'package:crud_flutter_firebase/pages/update_user_page.dart';
+import 'package:crud_flutter_firebase/services/delete_user_service.dart';
 import 'package:crud_flutter_firebase/services/get_users_service.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +94,7 @@ class _UsersPageState extends State<UsersPage> {
                     color: Colors.red,
                   ),
                   onPressed: () {
-                    // deleteUser(user.id);
+                    deleteUser(user);
                   },
                 ),
               ],
