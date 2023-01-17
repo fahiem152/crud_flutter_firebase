@@ -17,7 +17,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User'),
+        title: const Text('User'),
       ),
       body: StreamBuilder<List<User>>(
           stream: readUser(),
@@ -28,20 +28,20 @@ class _UsersPageState extends State<UsersPage> {
               final users = snapshot.data!;
               return ListView(children: users.map(buildUser).toList());
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
           }),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddUserPage(),
+              builder: (context) => const AddUserPage(),
             ),
           );
         },
@@ -50,7 +50,7 @@ class _UsersPageState extends State<UsersPage> {
   }
 
   Widget buildUser(User user) => Container(
-        margin: EdgeInsets.all(12),
+        margin: const EdgeInsets.all(12),
 
         child: Row(
           children: [
@@ -59,7 +59,7 @@ class _UsersPageState extends State<UsersPage> {
                 '${user.age}',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Column(
@@ -69,7 +69,7 @@ class _UsersPageState extends State<UsersPage> {
                 Text(user.birthday.toIso8601String()),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               children: [
                 IconButton(
@@ -83,13 +83,13 @@ class _UsersPageState extends State<UsersPage> {
                       ),
                     );
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                     color: Colors.blue,
                   ),
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
                   ),

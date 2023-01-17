@@ -18,39 +18,39 @@ class _AddUserPageState extends State<AddUserPage> {
   Widget build(BuildContext context) {
     InputDecoration decoration(String label) => InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         );
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
           onTap: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Add User',
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           TextField(
             controller: nameController,
             decoration: decoration('Name'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           TextField(
             controller: ageController,
             decoration: decoration('Age'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -65,7 +65,7 @@ class _AddUserPageState extends State<AddUserPage> {
                   dateController.text == '' ? 'Birthday' : dateController.text,
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.calendar_month,
                     color: Colors.blue,
                   ),
@@ -79,7 +79,6 @@ class _AddUserPageState extends State<AddUserPage> {
                     if (pickedDate != null) {
                       String formatDate =
                           DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(formatDate);
                       setState(() {
                         dateController.text = formatDate;
                       });
@@ -91,7 +90,7 @@ class _AddUserPageState extends State<AddUserPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 28,
           ),
           ElevatedButton(
@@ -103,7 +102,7 @@ class _AddUserPageState extends State<AddUserPage> {
               );
               createUSer(user);
             },
-            child: Text(
+            child: const Text(
               'Create',
             ),
           )

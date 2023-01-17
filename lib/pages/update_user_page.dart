@@ -1,6 +1,4 @@
 import 'package:crud_flutter_firebase/models/user_model.dart';
-import 'package:crud_flutter_firebase/services/create_user_service.dart';
-import 'package:crud_flutter_firebase/services/get_users_service.dart';
 import 'package:crud_flutter_firebase/services/update_user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -31,39 +29,39 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   Widget build(BuildContext context) {
     InputDecoration decoration(String label) => InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         );
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
           onTap: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Update User',
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           TextField(
             controller: _nameController,
             decoration: decoration('Name'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           TextField(
             controller: _ageController,
             decoration: decoration('Age'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -80,7 +78,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                       : _dateController.text,
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.calendar_month,
                     color: Colors.blue,
                   ),
@@ -106,7 +104,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 28,
           ),
           ElevatedButton(
@@ -120,7 +118,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               updateUser(user);
               Navigator.pop(context);
             },
-            child: Text(
+            child: const Text(
               'Update User',
             ),
           )
